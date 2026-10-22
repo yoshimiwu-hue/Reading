@@ -1,1 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>時代華語第一冊 - 約時間買禮物 (語音跟讀版)</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Microsoft JhengHei", sans-serif;
+      max-width: 880px;
+      margin: 30px auto;
+      padding: 0 20px 80px 20px;
+      line-height: 1.8;
+      color: #2c3e50;
+      background-color: #f8fafc;
+    }
+    h1 {
+      text-align: center;
+      color: #1e3a8a;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #64748b;
+      margin-bottom: 25px;
+    }
+    /* 語音按鈕樣式 */
+    .btn-audio {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85em;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: 8px;
+      box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+    }
+    .btn-audio:hover {
+      background-color: #1d4ed8;
+      transform: scale(1.05);
+    }
+    .btn-slow {
+      background-color: #10b981;
+    }
+    .btn-slow:hover {
+      background-color: #047857;
+    }
+    .btn-stop {
+      background-color: #ef4444;
+    }
+    .btn-stop:hover {
+      background-color: #b91c1c;
+    }
+    /* 顏色標籤 */
+    .tag-tone3 {
+      color: #c2410c;
+      background-color: #ffedd5;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .tag-tone1 {
+      color: #0369a1;
+      background-color: #e0f2fe;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .tag-light {
+      color: #15803d;
+      background-color: #dcfce7;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .tag-emotion {
+      color: #be185d;
+      background-color: #fce7f3;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    /* 卡片與區塊 */
+    .section-card {
+      background: white;
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .sentence-card {
+      background: #f1f5f9;
+      border-left: 5px solid #3b82f6;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 14px;
+    }
+    .full-text-box {
+      background: #eff6ff;
+      border: 2px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 20px;
+      font-size: 1.1em;
+      line-height: 2.2;
+    }
+    .control-panel {
+      position: sticky;
+      top: 15px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(5px);
+      padding: 12px 20px;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      z-index: 100;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #e2e8f0;
+      padding: 10px 14px;
+      text-align: left;
+    }
+    th {
+      background-color: #f8fafc;
+    }
+  </style>
+</head>
+<body>
 
+  <h1>🌟 時代華語第一冊：約時間買禮物 🌟</h1>
+  <div class="subtitle">🎙️ 點讀互動跟讀教材（請點擊按鈕聽標準台灣發音）</div>
+
+  <!-- 頂部浮動快捷控制器 -->
+  <div class="control-panel">
+    <button class="btn-audio btn-slow" onclick="playFullText(0.8)">▶️ 慢速聽全文 (0.8x)</button>
+    <button class="btn-audio" onclick="playFullText(1.0)">▶️ 正常語速 (1.0x)</button>
+    <button class="btn-audio btn-stop" onclick="stopAudio()">⏹️ 停止發音</button>
+  </div>
+
+  <!-- 單字關卡 -->
+  <div class="section-card">
+    <h2>🎯 第一關：生詞發音聽讀</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>生詞</th>
+          <th>拼音</th>
+          <th>發音點讀</th>
+          <th>英文</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>🏫 學校</td><td>xuéxiào</td><td><button class="btn-audio" onclick="speak('學校')">🔊 學校</button></td><td>school</td></tr>
+        <tr><td>🎒 上課</td><td>shàngkè</td><td><button class="btn-audio" onclick="speak('上課')">🔊 上課</button></td><td>attend class</td></tr>
+        <tr><td>☀️ 下午</td><td>xiàwǔ</td><td><button class="btn-audio" onclick="speak('下午')">🔊 下午</button></td><td>afternoon</td></tr>
+        <tr><td>🛒 買</td><td>mǎi</td><td><button class="btn-audio" onclick="speak('買')">🔊 買</button></td><td>to buy</td></tr>
+        <tr><td>📚 書</td><td>shū</td><td><button class="btn-audio" onclick="speak('書')">🔊 書</button></td><td>book</td></tr>
+        <tr><td>🤝 朋友</td><td>péngyou</td><td><button class="btn-audio" onclick="speak('朋友')">🔊 朋友</button></td><td>friend</td></tr>
+        <tr><td>🎂 生日</td><td>shēngrì</td><td><button class="btn-audio" onclick="speak('生日')">🔊 生日</button></td><td>birthday</td></tr>
+        <tr><td>🎁 禮物</td><td>lǐwù</td><td><button class="btn-audio" onclick="speak('禮物')">🔊 禮物</button></td><td>present</td></tr>
+        <tr><td>🚇 捷運</td><td>jiéyùn</td><td><button class="btn-audio" onclick="speak('捷運')">🔊 捷運</button></td><td>MRT</td></tr>
+        <tr><td>🍰 點心</td><td>diǎnxin</td><td><button class="btn-audio" onclick="speak('點心')">🔊 點心</button></td><td>snack</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 逐句跟讀關卡 -->
+  <div class="section-card">
+    <h2>🎙️ 第二關：逐句精練（變調與斷句跟讀）</h2>
+
+    <div class="sentence-card">
+      <b>第 1 句：</b> 明天 / 是我朋<span class="tag-light">友</span>的生日。
+      <button class="btn-audio btn-slow" onclick="speak('明天，是我朋友的生日。')">🔊 慢速跟讀</button><br>
+      <small>Míngtiān / shì wǒ péngyou de shēngrì.</small>
+    </div>
+
+    <div class="sentence-card">
+      <b>第 2 句：</b> 我<span class="tag-tone3">想買</span><span class="tag-tone1">一本</span>書，/ 送給他 / 當生日禮物。
+      <button class="btn-audio btn-slow" onclick="speak('我想買一本書，送給他當生日禮物。')">🔊 慢速跟讀</button><br>
+      <small>Wǒ xiáng mǎi yì běn shū, / sòng gěi tā / dāng shēngrì lǐwù.</small>
+    </div>
+
+    <div class="sentence-card">
+      <b>第 3 句：</b> 小美明天下午兩點 / 在學校上課，/ 三點下課。
+      <button class="btn-audio btn-slow" onclick="speak('小美明天下午兩點在學校上課，三點下課。')">🔊 慢速跟讀</button><br>
+      <small>Xiǎoměi míngtiān xiàwǔ liǎng diǎn / zài xuéxiào shàngkè, / sān diǎn xiàkè.</small>
+    </div>
+
+    <div class="sentence-card">
+      <b>第 4 句：</b> 👦 我問她：「下課以後，/ 我們<span class="tag-tone1">一起</span>去買書，/ 好<span class="tag-light">不</span>好？」
+      <button class="btn-audio btn-slow" onclick="speak('我問她：下課以後，我們一起去買書，好不好？')">🔊 慢速跟讀</button><br>
+      <small>"Xiàkè yǐhòu, / wǒmen yìqǐ qù mǎi shū, / hǎo bu hǎo?"</small>
+    </div>
+
+    <div class="sentence-card">
+      <b>第 5 句：</b> 👧 她說：「<span class="tag-emotion">好啊！</span>/ 我們下午三點半 / 在捷運站門口見，/ 再<span class="tag-tone1">一起</span>去 / 附近的書店。」
+      <button class="btn-audio btn-slow" onclick="speak('她說：好啊！我們下午三點半在捷運站門口見，再一起去附近的書店。')">🔊 慢速跟讀</button><br>
+      <small>"Hǎo a! / Wǒmen xiàwǔ sān diǎn bàn / zài jiéyùnzhàn ménkǒu jiàn, / zài yìqǐ qù / fùjìn de shūdiàn."</small>
+    </div>
+
+    <div class="sentence-card">
+      <b>第 6 句：</b> 買完書以後，/ 👧 小美問：「要<span class="tag-light">不</span>要喝杯茶？」/ 👦 我說：「<span class="tag-emotion">好啊！</span>/ 我<span class="tag-tone3">請你</span>。」
+      <button class="btn-audio btn-slow" onclick="speak('買完書以後，小美問：要不要喝杯茶？我說：好啊！我請你。')">🔊 慢速跟讀</button><br>
+      <small>Mǎi wán shū yǐhòu, Xiǎoměi wèn: "Yào bu yào hē bēi chá?" Wǒ shuō: "Hǎo a! Wǒ qíng nǐ."</small>
+    </div>
+
+    <div class="sentence-card">
+      <b>第 7 句：</b> 👧 她笑著說：「謝謝，/ 那我<span class="tag-tone3">請你</span>吃點<span class="tag-light">心</span>！」
+      <button class="btn-audio btn-slow" onclick="speak('她笑著說：謝謝，那我請你吃點心！')">🔊 慢速跟讀</button><br>
+      <small>Tā xiàozhe shuō: "Xièxie, / nà wǒ qíng nǐ chī diǎnxin!"</small>
+    </div>
+  </div>
+
+  <!-- 全文情境朗讀 -->
+  <div class="section-card">
+    <h2>🎭 第三關：全文沉浸式跟讀</h2>
+    <div class="full-text-box" id="fullArticle">
+      明天是我朋友的生日。我想買一本書，送給他當生日禮物。<br>
+      小美明天下午兩點在學校上課，三點下課。<br>
+      我問她：「下課以後，我們一起去買書，好不好？」<br>
+      她說：「好啊！我們下午三點半在捷運站門口見，再一起去附近的書店。」<br>
+      買完書以後，小美問：「要不要喝杯茶？」我說：「好啊！我請你。」<br>
+      她笑著說：「謝謝，那我請你吃點心！」
+    </div>
+  </div>
+
+  <!-- 語音核心引擎 JavaScript -->
+  <script>
+    function speak(text, rate = 0.85) {
+      if (!('speechSynthesis' in window)) {
+        alert('您的瀏覽器不支援發音，請使用 Google Chrome 或 Edge 開啟！');
+        return;
+      }
+      window.speechSynthesis.cancel(); // 停止先前的聲音
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'zh-TW'; // 設定台灣國語標準腔調
+      utterance.rate = rate;    // 語速
+      utterance.pitch = 1.0;
+
+      // 優先挑選台灣微軟或 Google 原生台灣語音庫
+      const voices = window.speechSynthesis.getVoices();
+      const twVoice = voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh_TW');
+      if (twVoice) utterance.voice = twVoice;
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function playFullText(rate) {
+      const text = `
+        明天是我朋友的生日。我想買一本書，送給他當生日禮物。
+        小美明天下午兩點在學校上課，三點下課。
+        我問她：下課以後，我們一起去買書，好不好？
+        她說：好啊！我們下午三點半在捷運站門口見，再一起去附近的書店。
+        買完書以後，小美問：要不要喝杯茶？我說：好啊！我請你。
+        她笑著說：謝謝，那我請你吃點心！
+      `;
+      speak(text, rate);
+    }
+
+    function stopAudio() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    }
+
+    // 預先載入語音庫
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+    }
+  </script>
+</body>
+</html>
