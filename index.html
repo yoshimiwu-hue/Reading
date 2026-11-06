@@ -2,32 +2,121 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>時代華語閱讀課程總覽</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>時代華語 - 華語跟讀與互動學習網</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; line-height: 1.6; }
-        h1 { color: #333; text-align: center; }
-        p { text-align: center; color: #666; }
-        ul { list-style: none; padding: 0; margin-top: 30px; }
-        li { margin: 15px 0; }
-        a { display: block; padding: 15px; background: #0366d6; color: white; text-decoration: none; border-radius: 6px; font-size: 18px; text-align: center; }
-        a:hover { background: #0056b3; }
+        body { font-family: 'Noto Sans TC', sans-serif; }
     </style>
 </head>
-<body>
-    <h1>時代華語閱讀課程</h1>
-    <p>請選擇您要學習的課程單元：</p>
-    <ul>
-        <li><a href="lesson1/">第一課：約時間買禮物</a></li>
-        <li><a href="lesson2/">第二課：週末去打球</a></li>
-        <li><a href="lesson3/">第三課：飯店在哪裡</a></li>
-        <li><a href="lesson4/">第四課：買一件衣服</a></li> 
-        <li><a href="lesson5/">第五課：我的中文課</a></li> 
-        <li><a href="lesson6/">第六課：今天不舒服</a></li> 
-        <li><a href="lesson7/">第七課：我的新朋友</a></li> 
-        <li><a href="lesson8/">第八課：我在公司的一天</a></li> 
-        <li><a href="lesson9/">第九課：用手機跟朋友聊天</a></li> 
-        <li><a href="lesson10/">第十課：一起過新年</a></li> 
-        <li><a href="lesson11/">第十一課：去台北玩</a></li> 
-    </ul>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white shadow-md">
+        <div class="max-w-4xl mx-auto px-4 py-8 text-center">
+            <h1 class="text-3xl font-bold">🌟 時代華語第一冊：互動跟讀學習網 🌟</h1>
+            <p class="text-indigo-200 text-sm mt-2">日籍學生專用華語聽力、單字複習與 Shadowing 跟讀教材</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full space-y-6">
+        <div class="bg-white rounded-xl shadow-md p-6">
+            <h2 class="text-xl font-bold text-indigo-700 mb-4 flex items-center">
+                📚 課程清單 (レッスン一覧)
+            </h2>
+            <p class="text-sm text-slate-600 mb-6">請選擇您要練習的課次，進入點讀跟讀與測驗系統：</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Lesson 7 -->
+                <a href="lesson7/index.html" class="p-5 border border-slate-200 rounded-xl hover:border-indigo-500 hover:shadow-md transition flex justify-between items-center bg-slate-50 group">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-600 bg-indigo-100 px-2.5 py-0.5 rounded">第 7 課</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-1 group-hover:text-indigo-600 transition">飯店在哪裡</h3>
+                    </div>
+                    <span class="text-indigo-500 font-bold">&rarr;</span>
+                </a>
+
+                <!-- Lesson 8 -->
+                <a href="lesson8/index.html" class="p-5 border border-slate-200 rounded-xl hover:border-indigo-500 hover:shadow-md transition flex justify-between items-center bg-slate-50 group">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-600 bg-indigo-100 px-2.5 py-0.5 rounded">第 8 課</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-1 group-hover:text-indigo-600 transition">買衣服</h3>
+                    </div>
+                    <span class="text-indigo-500 font-bold">&rarr;</span>
+                </a>
+
+                <!-- Lesson 9 -->
+                <a href="lesson9/index.html" class="p-5 border border-slate-200 rounded-xl hover:border-indigo-500 hover:shadow-md transition flex justify-between items-center bg-slate-50 group">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-600 bg-indigo-100 px-2.5 py-0.5 rounded">第 9 課</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-1 group-hover:text-indigo-600 transition">我的中文課</h3>
+                    </div>
+                    <span class="text-indigo-500 font-bold">&rarr;</span>
+                </a>
+
+                <!-- Lesson 10 -->
+                <a href="lesson10/index.html" class="p-5 border border-slate-200 rounded-xl hover:border-indigo-500 hover:shadow-md transition flex justify-between items-center bg-slate-50 group">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-600 bg-indigo-100 px-2.5 py-0.5 rounded">第 10 課</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-1 group-hover:text-indigo-600 transition">今天不舒服</h3>
+                    </div>
+                    <span class="text-indigo-500 font-bold">&rarr;</span>
+                </a>
+
+                <!-- Lesson 11 -->
+                <a href="lesson11/index.html" class="p-5 border border-slate-200 rounded-xl hover:border-indigo-500 hover:shadow-md transition flex justify-between items-center bg-slate-50 group">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-600 bg-indigo-100 px-2.5 py-0.5 rounded">第 11 課</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-1 group-hover:text-indigo-600 transition">我的新朋友</h3>
+                    </div>
+                    <span class="text-indigo-500 font-bold">&rarr;</span>
+                </a>
+
+                <!-- Lesson 12 -->
+                <a href="lesson12/index.html" class="p-5 border border-slate-200 rounded-xl hover:border-indigo-500 hover:shadow-md transition flex justify-between items-center bg-slate-50 group">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-600 bg-indigo-100 px-2.5 py-0.5 rounded">第 12 課</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-1 group-hover:text-indigo-600 transition">我在公司的一天</h3>
+                    </div>
+                    <span class="text-indigo-500 font-bold">&rarr;</span>
+                </a>
+
+                <!-- Lesson 13 -->
+                <a href="lesson13/index.html" class="p-5 border border-slate-200 rounded-xl hover:border-indigo-500 hover:shadow-md transition flex justify-between items-center bg-slate-50 group">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-600 bg-indigo-100 px-2.5 py-0.5 rounded">第 13 課</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-1 group-hover:text-indigo-600 transition">用手機跟朋友聊天</h3>
+                    </div>
+                    <span class="text-indigo-500 font-bold">&rarr;</span>
+                </a>
+
+                <!-- Lesson 14 -->
+                <a href="lesson14/index.html" class="p-5 border border-slate-200 rounded-xl hover:border-indigo-500 hover:shadow-md transition flex justify-between items-center bg-slate-50 group">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-600 bg-indigo-100 px-2.5 py-0.5 rounded">第 14 課</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-1 group-hover:text-indigo-600 transition">一起過新年</h3>
+                    </div>
+                    <span class="text-indigo-500 font-bold">&rarr;</span>
+                </a>
+
+                <!-- Lesson 16 -->
+                <a href="lesson16/index.html" class="p-5 border border-slate-200 rounded-xl hover:border-indigo-500 hover:shadow-md transition flex justify-between items-center bg-slate-50 group">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-600 bg-indigo-100 px-2.5 py-0.5 rounded">第 16 課</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-1 group-hover:text-indigo-600 transition">去台北玩</h3>
+                    </div>
+                    <span class="text-indigo-500 font-bold">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-4 mt-auto">
+        <div class="max-w-4xl mx-auto px-4 text-center text-xs text-slate-500">
+            華語跟讀互動練習系統 &copy; 2026 | GitHub Pages
+        </div>
+    </footer>
 </body>
 </html>
