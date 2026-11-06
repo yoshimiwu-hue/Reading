@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>華語跟讀互動練習：時代華語 第8課</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white shadow-md">
+        <div class="max-w-4xl mx-auto px-4 py-6 flex flex-col sm:flex-row justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold">時代華語 第15堂 第8課</h1>
+                <p class="text-indigo-200 text-sm mt-1">日籍學生專用華語跟讀與聽中文確認日文 (TOCFL A2)</p>
+            </div>
+            <div class="mt-4 sm:mt-0 flex space-x-2">
+                <button onclick="switchTab('vocab')" id="btn-vocab" class="px-4 py-2 bg-indigo-700 text-white font-medium rounded-lg shadow hover:bg-indigo-800 transition">單字複習</button>
+                <button onclick="switchTab('shadowing')" id="btn-shadowing" class="px-4 py-2 bg-indigo-500 text-white font-medium rounded-lg shadow hover:bg-indigo-600 transition">聽中文確認日文</button>
+                <button onclick="switchTab('quiz')" id="btn-quiz" class="px-4 py-2 bg-indigo-500 text-white font-medium rounded-lg shadow hover:bg-indigo-600 transition">課後測驗</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-8 flex-grow w-full">
+        
+        <!-- Tab 1: Vocab -->
+        <section id="tab-vocab" class="space-y-6">
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h2 class="text-xl font-bold text-indigo-700 mb-4 flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    單字複習 (単語復習)
+                </h2>
+                <p class="text-sm text-slate-600 mb-6">點擊喇叭按鈕可以聆聽發音，並參照日語意思與拼音進行複習。</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="vocab-grid">
+                    <!-- Vocab items injected via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 2: Shadowing & Listen to Chinese Confirm Japanese -->
+        <section id="tab-shadowing" class="hidden space-y-6">
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
+                    <div>
+                        <h2 class="text-xl font-bold text-indigo-700 flex items-center">
+                            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"></path></svg>
+                            聽中文確認日文與跟讀 (リスニング・シャドーイング)
+                        </h2>
+                        <p class="text-xs text-slate-500 mt-1">先聽中文語音或閱讀中文，再點擊下方按鈕顯示日文確認意思。</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="toggleAllPinyin()" id="pinyin-toggle-btn" class="text-xs bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-1.5 rounded transition font-medium">隱藏拼音</button>
+                        <button onclick="toggleAllJapanese()" id="jp-toggle-btn" class="text-xs bg-indigo-100 hover:bg-indigo-200 text-indigo-800 px-3 py-1.5 rounded transition font-medium">顯示全部日文</button>
+                    </div>
+                </div>
+
+                <div class="space-y-6" id="shadowing-list">
+                    <!-- Shadowing sentences injected via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 3: Quiz (Listen to Chinese, Choose Japanese) -->
+        <section id="tab-quiz" class="hidden space-y-6">
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h2 class="text-xl font-bold text-indigo-700 mb-2 flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    課後測驗：聽中文選日文 (聴いて選ぶ)
+                </h2>
+                <p class="text-sm text-slate-600 mb-6">點擊播放中文語音或閱讀題目，然後選出正確的日文翻譯！</p>
+
+                <div id="quiz-container" class="space-y-6">
+                    <!-- Quiz questions injected via JS -->
+                </div>
+
+                <div id="quiz-result" class="mt-6 p-4 rounded-xl hidden text-center font-bold text-lg"></div>
+
+                <div class="mt-6 flex justify-center">
+                    <button onclick="resetQuiz()" class="px-6 py-2.5 bg-indigo-600 text-white font-medium rounded-lg shadow hover:bg-indigo-700 transition">重新測驗</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-4 mt-auto">
+        <div class="max-w-4xl mx-auto px-4 text-center text-xs text-slate-500">
+            華語跟讀互動練習系統 &copy; 2026 | 搭配《時代華語》教材設計
+        </div>
+    </footer>
+
+    <!-- Script Data & Logic -->
+    <script>
+        const vocabData = [
+            { word: "衣服", pinyin: "yī fu", meaning: "服、洋服", note: "名詞" },
+            { word: "裙子", pinyin: "qún zi", meaning: "スカート", note: "名詞" },
+            { word: "件", pinyin: "jiàn", meaning: "〜着（服の量詞）", note: "量詞" },
+            { word: "試穿", pinyin: "shì chuān", meaning: "試着する", note: "動詞" },
+            { word: "紅色", pinyin: "hóng sè", meaning: "赤色", note: "形容詞／名詞" },
+            { word: "藍色", pinyin: "lán sè", meaning: "青色／水色", note: "形容詞／名詞" }
+        ];
+
+        const shadowingData = [
+            {
+                zh: "今天我跟朋友去買衣服。我看到一件藍色的衣服。",
+                pinyin: "Jīn tiān wǒ gēn péng you qù mǎi yī fu。wǒ kàn dào yí jiàn lán sè de yī fu。",
+                jp: "今日、友達と服を買いに行きました。青い服を1着見つけました。",
+                tip: "注意「跟」與「藍色」的輕聲與變調。"
+            },
+            {
+                zh: "我問店員：「這件多少錢？」店員說：「三百塊。」",
+                pinyin: "Wǒ wèn diàn yuán：「zhè jiàn duō shǎo qián？」diàn yuán shuō：「sān bǎi kuài。」",
+                jp: "店員に「これはいくらですか」と聞きました。店員は「300元です」と言いました。",
+                tip: "「多少錢」是詢問價格的必備句型。"
+            },
+            {
+                zh: "我問：「可以試穿嗎？」她說：「可以。」",
+                pinyin: "Wǒ wèn：「kě yǐ shì chuān ma？」tā shuō：「kě yǐ。」",
+                jp: "私は「試着できますか」と聞きました。彼女は「できますよ」と言いました。",
+                tip: "「可以〜嗎？」表達請求許可。"
+            },
+            {
+                zh: "我穿上衣服，朋友說：「很好看！」",
+                pinyin: "Wǒ chuān shàng yī fu，péng you shuō：「hěn hǎo kàn！」",
+                jp: "服を着てみると、友達が「よく似合ってるね！」と言いました。",
+                tip: "「穿上」表示將衣物穿在身上。"
+            },
+            {
+                zh: "我也很喜歡。我買了這件衣服，開心地回家了。",
+                pinyin: "Wǒ yě hěn xǐ huan。wǒ mǎi le zhè jiàn yī fu，kāi xīn de huí jiā le。",
+                jp: "我也很喜歡。我買了這件衣服，開心地回家了。",
+                tip: "「開心地」用來修飾後面的動作回家。"
+            }
+        ];
+
+        const quizData = [
+            {
+                zh: "今天我跟朋友去買衣服。我看到一件藍色的衣服。",
+                correct: "今日、友達と服を買いに行きました。青い服を1着見つけました。",
+                options: [
+                    "今日、友達と服を買いに行きました。青い服を1着見つけました。",
+                    "明日、買い物に行きます。赤い服が好きです。",
+                    "友達と一緒にスカートを買いました。",
+                    "これはいくらですか。300元です。"
+                ]
+            },
+            {
+                zh: "這件多少錢？三百塊。",
+                correct: "これはいくらですか。300元です。",
+                options: [
+                    "試着してもいいですか。いいですよ。",
+                    "これはいくらですか。300元です。",
+                    "服を着てみると、とてもきれいでした。",
+                    "青いスカートを1着買いました。"
+                ]
+            },
+            {
+                zh: "可以試穿嗎？可以。",
+                correct: "試着してもいいですか。できますよ。",
+                options: [
+                    "友達と楽しく帰りました。",
+                    "これは何色ですか。赤色です。",
+                    "試着してもいいですか。できますよ。",
+                    "服を着て、とても気に入りました。"
+                ]
+            },
+            {
+                zh: "我穿上衣服，朋友說：「很好看！」",
+                correct: "服を着てみると、友達が「よく似合ってるね！」と言いました。",
+                options: [
+                    "店員にいくらか尋ねました。",
+                    "服を着てみると、友達が「よく似合ってるね！」と言いました。",
+                    "青い洋服をたくさん見ました。",
+                    "楽しくて家に帰りました。"
+                ]
+            },
+            {
+                zh: "我買了這件衣服，開心地回家了。",
+                correct: "我也很喜歡。我買了這件衣服，開心地回家了。",
+                options: [
+                    "友達とカフェに行きました。",
+                    "我也很喜歡。我買了這件衣服，開心地回家了。",
+                    "試着室はどこですか。",
+                    "赤色のスカートを探しています。"
+                ]
+            }
+        ];
+
+        let showPinyin = true;
+        let globalShowJp = false;
+        let jpVisibleState = {};
+        let userAnswers = {};
+
+        function renderVocab() {
+            const grid = document.getElementById('vocab-grid');
+            grid.innerHTML = vocabData.map(item => `
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 flex items-center justify-between hover:border-indigo-300 transition">
+                    <div>
+                        <div class="flex items-baseline space-x-2">
+                            <span class="text-xl font-bold text-slate-800">${item.word}</span>
+                            <span class="text-xs text-indigo-600 font-semibold bg-indigo-50 px-2 py-0.5 rounded">${item.note}</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1">${item.pinyin}</p>
+                        <p class="text-sm text-slate-700 mt-1 font-medium">${item.meaning}</p>
+                    </div>
+                    <button onclick="speakText('${item.word}')" class="p-2.5 bg-indigo-100 text-indigo-700 rounded-full hover:bg-indigo-200 transition" title="朗讀">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function renderShadowing() {
+            const list = document.getElementById('shadowing-list');
+            list.innerHTML = shadowingData.map((item, idx) => {
+                const isJpVisible = globalShowJp || jpVisibleState[idx];
+                return `
+                    <div class="border border-slate-200 rounded-xl p-5 bg-slate-50 hover:border-indigo-200 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold text-indigo-600 bg-indigo-100 px-2.5 py-1 rounded-full">句子 ${idx + 1}</span>
+                            <div class="flex items-center space-x-2">
+                                <button onclick="speakText('${item.zh}')" class="flex items-center space-x-1 text-xs bg-indigo-600 text-white px-3 py-1.5 rounded-lg hover:bg-indigo-700 transition">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                                    <span>聽中文發音</span>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="text-lg font-bold text-slate-800 mb-1">${item.zh}</p>
+                        <p class="text-xs text-indigo-700 font-mono mb-3 transition-all ${showPinyin ? '' : 'hidden'}">${item.pinyin}</p>
+                        
+                        <div class="mt-3 pt-3 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                            <div class="w-full sm:w-auto flex-grow">
+                                ${isJpVisible ? `
+                                    <div class="text-sm text-slate-700 bg-white p-2.5 rounded border border-indigo-200">
+                                        🇯🇵 ${item.jp}
+                                    </div>
+                                ` : `
+                                    <button onclick="toggleJapanese(${idx})" class="text-xs text-indigo-600 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 px-3 py-1.5 rounded transition font-medium w-full sm:w-auto text-center">
+                                        👁️ 點擊確認日文意思 (日本語訳を見る)
+                                    </button>
+                                `}
+                            </div>
+                        </div>
+                        <p class="text-xs text-amber-700 bg-amber-50 p-2 rounded border border-amber-200 mt-3">💡 練習提示：${item.tip}</p>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('您的瀏覽器不支援語音朗讀功能。');
+            }
+        }
+
+        function toggleAllPinyin() {
+            showPinyin = !showPinyin;
+            const btn = document.getElementById('pinyin-toggle-btn');
+            btn.textContent = showPinyin ? "隱藏拼音" : "顯示拼音";
+            renderShadowing();
+        }
+
+        function toggleAllJapanese() {
+            globalShowJp = !globalShowJp;
+            const btn = document.getElementById('jp-toggle-btn');
+            btn.textContent = globalShowJp ? "隱藏全部日文" : "顯示全部日文";
+            renderShadowing();
+        }
+
+        function toggleJapanese(idx) {
+            jpVisibleState[idx] = !jpVisibleState[idx];
+            renderShadowing();
+        }
+
+        function switchTab(tabName) {
+            ['vocab', 'shadowing', 'quiz'].forEach(t => {
+                const tabEl = document.getElementById(`tab-${t}`);
+                const btnEl = document.getElementById(`btn-${t}`);
+                if(tabEl) tabEl.classList.add('hidden');
+                if(btnEl) {
+                    btnEl.classList.remove('bg-indigo-700', 'bg-indigo-500');
+                    btnEl.classList.add('bg-indigo-500');
+                }
+            });
+            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+            document.getElementById(`btn-${tabName}`).classList.remove('bg-indigo-500');
+            document.getElementById(`btn-${tabName}`).classList.add('bg-indigo-700');
+        }
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = quizData.map((q, qIdx) => {
+                const selected = userAnswers[qIdx];
+                return `
+                    <div class="border border-slate-200 rounded-xl p-5 bg-slate-50">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold text-indigo-600 bg-indigo-100 px-2.5 py-1 rounded-full">問題 ${qIdx + 1} / 5</span>
+                            <button onclick="speakText('${q.zh}')" class="flex items-center space-x-1 text-xs bg-indigo-600 text-white px-3 py-1.5 rounded-lg hover:bg-indigo-700 transition">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                                <span>聽中文語音</span>
+                            </button>
+                        </div>
+                        <p class="text-lg font-bold text-slate-800 mb-4">🔊 聽中文選出正確日文意思：<br><span class="text-indigo-700">「${q.zh}」</span></p>
+                        
+                        <div class="grid grid-cols-1 gap-2.5">
+                            ${q.options.map((opt, oIdx) => {
+                                let btnStyle = "bg-white border-slate-200 hover:border-indigo-300 text-slate-700";
+                                if (selected !== undefined) {
+                                    if (opt === q.correct) {
+                                        btnStyle = "bg-emerald-50 border-emerald-300 text-emerald-800 font-bold";
+                                    } else if (selected === oIdx) {
+                                        btnStyle = "bg-rose-50 border-rose-300 text-rose-800";
+                                    } else {
+                                        btnStyle = "bg-white border-slate-200 opacity-60";
+                                    }
+                                }
+                                return `
+                                    <button onclick="selectQuizOption(${qIdx}, ${oIdx})" class="p-3 text-left border rounded-lg transition text-sm flex items-center justify-between ${btnStyle}">
+                                        <span>🇯🇵 ${opt}</span>
+                                        ${selected !== undefined && opt === q.correct ? '<span class="text-emerald-600 text-xs font-bold">正確</span>' : ''}
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            checkQuizCompletion();
+        }
+
+        function selectQuizOption(qIdx, oIdx) {
+            userAnswers[qIdx] = oIdx;
+            renderQuiz();
+        }
+
+        function checkQuizCompletion() {
+            if (Object.keys(userAnswers).length === quizData.length) {
+                let correctCount = 0;
+                quizData.forEach((q, idx) => {
+                    if (q.options[userAnswers[idx]] === q.correct) {
+                        correctCount++;
+                    }
+                });
+                const resultDiv = document.getElementById('quiz-result');
+                resultDiv.classList.remove('hidden');
+                if (correctCount === quizData.length) {
+                    resultDiv.className = "mt-6 p-4 rounded-xl bg-emerald-100 text-emerald-800 font-bold text-lg text-center";
+                    resultDiv.textContent = `🎉 太棒了！全部答對 (${correctCount}/${quizData.length})！`;
+                } else {
+                    resultDiv.className = "mt-6 p-4 rounded-xl bg-amber-100 text-amber-800 font-bold text-lg text-center";
+                    resultDiv.textContent = `💪 測驗完成！答對題數：${correctCount} / ${quizData.length}`;
+                }
+            }
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            document.getElementById('quiz-result').classList.add('hidden');
+            renderQuiz();
+        }
+
+        // Initialize
+        renderVocab();
+        renderShadowing();
+        renderQuiz();
+    </script>
+</body>
+</html>
