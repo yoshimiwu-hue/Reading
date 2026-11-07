@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>時代華語第一冊：去台北玩 (第16課)</title>
+    <title>時代華語第一冊：一起過新年 (第14課)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -15,8 +15,8 @@
     <header class="bg-indigo-600 text-white shadow-md">
         <div class="max-w-4xl mx-auto px-4 py-6 flex flex-col sm:flex-row justify-between items-center">
             <div>
-                <h1 class="text-2xl font-bold">🌟 時代華語第一冊：去台北玩 🌟</h1>
-                <p class="text-indigo-200 text-sm mt-1">第24堂 第16課 | 點讀互動跟讀教材 (日籍學生專用)</p>
+                <h1 class="text-2xl font-bold">🌟 時代華語第一冊：一起過新年 🌟</h1>
+                <p class="text-indigo-200 text-sm mt-1">第23堂 第14至15課 | 點讀互動跟讀教材 (日籍學生專用)</p>
             </div>
             <div class="mt-4 sm:mt-0 flex space-x-2">
                 <button onclick="switchTab('vocab')" id="btn-vocab" class="px-4 py-2 bg-indigo-700 text-white font-medium rounded-lg shadow hover:bg-indigo-800 transition text-sm">第一關：生詞</button>
@@ -104,11 +104,11 @@
                 <div id="immersion-translation-box" class="hidden mt-6 bg-indigo-50 border border-indigo-200 rounded-xl p-6 space-y-3 text-slate-700">
                     <h3 class="font-bold text-indigo-800 text-sm">🇯🇵 全文日文翻譯 (日本語全訳)：</h3>
                     <p class="text-sm leading-relaxed">
-                        今週末、私は友達と一緒に台北へ遊びに行きました。私たちは地下鉄に乗って夜市に行きました。<br>
-                        夜市は地下鉄の駅からとても近くて、歩いて5分ですぐに着きました。<br>
-                        夜市にはたくさんの人がいて、おいしい食べ物もたくさんありました。<br>
-                        友達が「何が食べたい？」と尋ねました。私は「牛肉麺が食べたいです」と言いました。<br>
-                        食べ終わったあと、私たちは一緒に写真を撮りました。今日はとても楽しかったです。
+                        今日は12月31日です。夜、私は友達と一緒にご飯を食べ、テレビを見ました。<br>
+                        もうすぐ12時になるところで、みんな寝ていませんでした。<br>
+                        テレビにはきれいな花火が映っていました。私たちは一緒に「新年あけましておめでとう！」と言いました。<br>
+                        私も家族に電話をかけました。お母さんは「あけましておめでとう！今日は楽しいですか」と言いました。<br>
+                        私は「とても楽しいです！そちらはどうですか」と言いました。
                     </p>
                 </div>
             </div>
@@ -119,52 +119,52 @@
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-4 mt-auto">
         <div class="max-w-4xl mx-auto px-4 text-center text-xs text-slate-500">
-            華語跟讀互動練習系統 &copy; 2026 | 搭配《時代華語》第一冊 第16課設計
+            華語跟讀互動練習系統 &copy; 2026 | 搭配《時代華語》第一冊 第14課設計
         </div>
     </footer>
 
     <!-- Script Data & Logic -->
     <script>
         const vocabData = [
-            { word: "旅行", pinyin: "lǚ xíng", meaning: "旅行する (to travel)", note: "動詞/名詞" },
-            { word: "台北", pinyin: "tái běi", meaning: "台北 (Taipei)", note: "專有名詞" },
+            { word: "新年", pinyin: "xīn nián", meaning: "新年 (New Year)", note: "名詞" },
             { word: "朋友", pinyin: "péng you", meaning: "友達 (friend)", note: "名詞" },
-            { word: "捷運", pinyin: "jié yùn", meaning: "地下鉄 (MRT)", note: "名詞" },
-            { word: "夜市", pinyin: "yè shì", meaning: "ナイトマーケット (night market)", note: "名詞" },
-            { word: "近", pinyin: "jìn", meaning: "近い (close / near)", note: "形容詞" },
-            { word: "好吃", pinyin: "hǎo chī", meaning: "おいしい (delicious)", note: "形容詞" }
+            { word: "家人", pinyin: "jiā rén", meaning: "家族 (family members)", note: "名詞" },
+            { word: "吃飯", pinyin: "chī fàn", meaning: "食事をする (to eat a meal)", note: "動詞" },
+            { word: "電視", pinyin: "diàn shì", meaning: "テレビ (television)", note: "名詞" },
+            { word: "煙火", pinyin: "yān huǒ", meaning: "花火 (fireworks)", note: "名詞" },
+            { word: "快樂", pinyin: "kuài lè", meaning: "楽しい・おめでとう (happy)", note: "形容詞" }
         ];
 
         const shadowingData = [
             {
-                zh: "這個週末，/ 我跟朋友去台北玩。/ 我們坐捷運去夜市。",
-                pinyin: "Zhè gè zhōu mò, / wǒ gēn péng you qù tái běi wán. / Wǒ men zuò jié yùn qù yè shì.",
-                jp: "今週末、私は友達と一緒に台北へ遊びに行きました。私たちは地下鉄に乗って夜市に行きました。",
+                zh: "今天是十二月三十一日。/ 晚上，我跟朋友一起吃飯、/ 看電視。",
+                pinyin: "Jīn tiān shì shí èr yuè sān shí yī rì. / Wǎn shàng, wǒ gēn péng you yì qǐ chī fàn, / kàn diàn shì.",
+                jp: "今日は12月31日です。夜、私は友達と一緒にご飯を食べ、テレビを見ました。",
                 speaker: ""
             },
             {
-                zh: "夜市離捷運站很近，/ 走路五分鐘就到了。",
-                pinyin: "Yè shì lí jié yùn zhàn hěn jìn, / zǒu lù wǔ fēn zhōng jiù dào le.",
-                jp: "夜市は地下鉄の駅からとても近くて、歩いて5分ですぐに着きました。",
+                zh: "快十二點了，/ 大家都沒有睡。",
+                pinyin: "Kuài shí èr diǎn le, / dà jiā dōu méi yǒu shuì.",
+                jp: "もうすぐ12時になるところで、みんな寝ていませんでした。",
                 speaker: ""
             },
             {
-                zh: "夜市有很多人，/ 也有很多好吃的東西。",
-                pinyin: "Yè shì yǒu hěn duō rén, / yě yǒu hěn duō hǎo chī de dōng xi.",
-                jp: "夜市にはたくさんの人がいて、おいしい食べ物もたくさんありました。",
-                speaker: ""
-            },
-            {
-                zh: "朋友問：「你想吃什麼？」 / 我說：「我想吃牛肉麵。」",
-                pinyin: "Péng you wèn: \"Nǐ xiǎng chī shén me?\" / Wǒ shuō: \"Wǒ xiǎng chī niú ròu miàn.\"",
-                jp: "友達が「何が食べたい？」と尋ねました。私は「牛肉麺が食べたいです」と言いました。",
+                zh: "電視上有漂亮的煙火。/ 我們一起說：「新年快樂！」",
+                pinyin: "Diàn shì shàng yǒu piào liàng de yān huǒ. / Wǒ men yì qǐ shuō: \"Xīn nián kuài lè!\"",
+                jp: "テレビにはきれいな花火が映っていました。私たちは一緒に「新年あけましておめでとう！」と言いました。",
                 speaker: "🗣️"
             },
             {
-                zh: "吃完以後，/ 我們一起拍照。/ 我覺得今天很好玩。",
-                pinyin: "Chī wán yǐ hòu, / wǒ men yì qǐ pāi zhào. / Wǒ jué de jīn tiān hěn hǎo wán.",
-                jp: "食べ終わったあと、私たちは一緒に写真を撮りました。今日はとても楽しかったです。",
-                speaker: ""
+                zh: "我也打電話給家人。/ 媽媽說：「新年快樂！你今天開心嗎？」",
+                pinyin: "Wǒ yě dǎ diàn huà gěi jiā rén. / Mā ma shuō: \"Xīn nián kuài lè! Nǐ jīn tiān kāi xīn ma?\"",
+                jp: "私も家族に電話をかけました。お母さんは「あけましておめでとう！今日は楽しいですか」と言いました。",
+                speaker: "🗣️"
+            },
+            {
+                zh: "我說：「很開心！你們呢？」",
+                pinyin: "Wǒ shuō: \"Hěn kāi xīn! Nǐ men ne?\"",
+                jp: "私は「とても楽しいです！そちらはどうですか」と言いました。",
+                speaker: "🗣️"
             }
         ];
 
